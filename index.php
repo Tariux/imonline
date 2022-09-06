@@ -8,6 +8,6 @@
     <title>ImOnline</title>
 </head>
 <body>
-    <h2>Hello GitHub!</h2>
+    <h2>GitHub!</h2>
 </body>
 </html>
