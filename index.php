@@ -1,5 +1,5 @@
 <?php 
-    include_once("app/lib/SDate/SDate.php");
+    include_once("app/inc/functions.php");
     $Date = new SDate;
     $spring_year = $Date->jdate("f") ."  ". $Date->jdate("Y");
 
