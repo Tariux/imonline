@@ -1,0 +1,17 @@
+h3,h2,h1 {
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    color: #fff;
+    text-shadow: 0 0 5px #f9f9f9;
+
+}
+body {
+    background: url('../images/wallpaper.jpg');
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    height: 100vh;
+    padding: 5vh 0;
+    overflow: hidden;
+}

@@ -1,7 +1,8 @@
 <?php 
     include_once("app/lib/SDate/SDate.php");
     $Date = new SDate;
-    
+    $spring_year = $Date->jdate("f") ."  ". $Date->jdate("Y");
+
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +21,24 @@
     <title>ImOnline</title>
 </head>
 <body>
-    <h2>hello from my localhost GitHub!</h2>
+    <h1>سلام گیتــهاب</h1>
 
     <h1>
         <?php
-            echo $Date->getMonthName();
+            echo $spring_year;
         ?>
     </h1>
+    <h1 id="clock_text">در حال بارگذاری</h1>
+
+
+    <script>
+        setInterval(function () {
+            var today = new Date();
+            let time = today.getHours() + " : " + today.getMinutes() + " : " + today.getSeconds();
+            document.getElementById("clock_text").innerText = time;
+        }, 1000); 
+     </script>
+
 </body>
+
 </html>
