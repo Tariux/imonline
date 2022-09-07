@@ -10,7 +10,7 @@ function questSessionId()
     $session_id = session_id() ? sha1(session_id()) : false;
 
     if ($session_id === false) {
-        trigger_error(" please session_start() safe first! " , E_USER_NOTICE);
+        trigger_error("hey bro! please session_start() safe first!" , E_USER_NOTICE);
         return false;
     }
 
