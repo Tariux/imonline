@@ -42,3 +42,6 @@ class MyDataBase {
 
 $db = MyDataBase::MySqlDB();
 print_r($db);
+
+
+// WORK FOR FUN AND LOVE NOT FOR MONEY
