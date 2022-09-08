@@ -36,6 +36,15 @@ class MyDataBase {
 
 
     }
+
+    public function MySqlInsert($table , $indexArr , $valuesArr)
+    {
+        $insertSql = "INSERT INTO
+        `:table` 
+         (`track_id`, `session`, `ip_addr`, `lastupdate`) 
+         VALUES (NULL, 'db3938206ddcbc42bbddb3118dd0dd64a6b77773', 'localhost', current_timestamp()); 
+        ";
+    }
  
 }
 
