@@ -1,52 +1,9 @@
 <?php
 
+require_once("../inc/functions.php");
 require_once("./database-func.php");
 
-$db = MyDataBase::MySqlDB();
 
-function seprateArray($arr, $dataType = "index", $seprator = ",")
-{
-    if (empty($arr)) {
-        return false;
-    }
-    $sepratedStr = "";
-
-    switch ($dataType) {
-        case "value":
-
-            foreach ($arr as $str_section) {
-                $sepratedStr = $sepratedStr . '"' . $str_section . '"' . $seprator;
-            }
-
-            $sepratedStr = substr($sepratedStr, 0, -1);
-
-            break;
-
-        case "db":
-
-            foreach ($arr as $str_section) {
-                $sepratedStr = $sepratedStr . '`' . $str_section . '`' . $seprator;
-            }
-
-            $sepratedStr = substr($sepratedStr, 0, -1);
-
-            break;
-
-        default:
-
-            foreach ($arr as $str_section) {
-                $sepratedStr = $sepratedStr . $str_section . $seprator;
-            }
-
-            $sepratedStr = substr($sepratedStr, 0, -1);
-
-            break;
-    }
-
-
-
-    return $sepratedStr;
-}
 function questSessionId()
 {
     $session_id = session_id() ? sha1(session_id()) : false;
@@ -77,9 +34,15 @@ function questIp()
 
     return $ip_address;
 }
+date_default_timezone_set("Asia/Tehran");
+
+$db = new MyDataBase;
 
 session_start();
 //print_r(questIp());
 //print_r(questSessionId());
-print_r(seprateArray(['mamad', 'reza', 'dude'], "db", " ,"));
+//print_r(seprateArray(['mamad', 'reza', 'dude'], "db", " ,"));
+
+var_dump($db->MySqlInsert("quests" , ['session' , 'ip_addr' ] , [questSessionId() , questIp() ]));
+
 // find   Beauty   in   the   code!

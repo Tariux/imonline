@@ -1,19 +1,24 @@
-<?php 
-class MyDataBase {
+<?php
+
+require_once("../inc/functions.php");
+
+
+class MyDataBase
+{
 
     public static function MySqlDB(
 
-    $host = "localhost" ,
-    $username = "root" ,
-    $password = "" ,
-    $db = "imonline" ,
-    $port = "3306",
-    $charset = 'utf8mb4',
-    $options = [
-        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-        \PDO::ATTR_EMULATE_PREPARES   => false,
-    ]
+        $host = "localhost",
+        $username = "root",
+        $password = "",
+        $db = "imonline",
+        $port = "3306",
+        $charset = 'utf8mb4',
+        $options = [
+            \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+            \PDO::ATTR_EMULATE_PREPARES   => false,
+        ]
 
     ) {
 
@@ -26,26 +31,43 @@ class MyDataBase {
             if ($pdo) {
                 return $pdo;
             }
-
         } catch (\PDOException $e) {
 
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
             return $e;
+        }
+    }
 
+    public function MySqlInsert($table, $indexArr, $valuesArr)
+    {
+
+        if (
+            empty($table) ||
+            empty($indexArr) ||
+            empty($valuesArr) // ||
+        ) {
+            return false;
         }
 
-
-    }
-
-    public function MySqlInsert($table , $indexArr , $valuesArr)
-    {
         $insertSql = "INSERT INTO
-        `:table` 
-         (`track_id`, `session`, `ip_addr`, `lastupdate`) 
-         VALUES (NULL, 'db3938206ddcbc42bbddb3118dd0dd64a6b77773', 'localhost', current_timestamp()); 
-        ";
+        `$table` 
+        ( " . seprateArray($indexArr , "db") . " ) 
+         VALUES
+        ( " . seprateArray($valuesArr , "value") . " )   
+        ;";
+
+        $dbObj = $this::MySqlDB();
+        
+        $prepare = $dbObj->prepare($insertSql);
+
+        $execute = ($prepare->errorInfo()) ? $prepare->execute() : null;
+
+        if ($execute) {
+            return true;
+        } else {
+            return false;
+        }
     }
- 
 }
 
 
