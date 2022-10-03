@@ -1,7 +1,7 @@
 <?php
 
-require_once("../inc/functions.php");
-require_once("./database-func.php");
+require_once(dirname(__DIR__) . "/inc/functions.php");
+require_once(__DIR__ . "/database-func.php");
 
 
 function questSessionId()
@@ -43,6 +43,6 @@ session_start();
 //print_r(questSessionId());
 //print_r(seprateArray(['mamad', 'reza', 'dude'], "db", " ,"));
 
-var_dump($db->MySqlInsert("quests" , ['session' , 'ip_addr' ] , [questSessionId() , questIp() ]));
+//var_dump($db->MySqlInsert("quests" , ['session' , 'ip_addr' ] , [questSessionId() , questIp() ]));
 
 // find   Beauty   in   the   code!

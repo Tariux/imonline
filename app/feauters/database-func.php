@@ -1,6 +1,6 @@
 <?php
 
-require_once("../inc/functions.php");
+require_once(dirname(__DIR__) . "/inc/functions.php");
 
 
 class MyDataBase
