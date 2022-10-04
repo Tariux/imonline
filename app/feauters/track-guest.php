@@ -34,11 +34,11 @@ function questIp()
 
     return $ip_address;
 }
-date_default_timezone_set("Asia/Tehran");
+//date_default_timezone_set("Asia/Tehran");
 
-$db = new MyDataBase;
+//$db = new MyDataBase;
 
-session_start();
+//session_start();
 //print_r(questIp());
 //print_r(questSessionId());
 //print_r(seprateArray(['mamad', 'reza', 'dude'], "db", " ,"));

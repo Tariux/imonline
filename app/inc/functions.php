@@ -45,7 +45,13 @@ function seprateArray($arr, $dataType = "index", $seprator = ",")
 }
 
 
-
+function shamsiTime()
+{   
+    $Date = new SDate;
+    $currentTime = $Date->jdate("y")."/".$Date->jdate("m")."/".$Date->jdate("d") . " - " . $Date->jdate("h").":".$Date->jdate("i").":".$Date->jdate("s");
+    $currentTime = $Date->persianToLatinNumber($currentTime);
+    return $currentTime;
+}
 
 
 

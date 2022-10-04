@@ -68,6 +68,57 @@ class MyDataBase
             return false;
         }
     }
+
+
+    public function MySqlCheck($table, $index, $value)
+    {
+
+        if (
+            empty($table) ||
+            empty($index) //||
+        ) {
+            return false;
+        }
+
+        $dbObj = $this::MySqlDB();
+        
+
+        $prepare = $dbObj->prepare("SELECT $index from $table where $index = :value");
+        $prepare->bindParam(":value", $value);
+        $prepare->execute();
+
+        if($prepare->rowCount() > 0)
+        {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function MySqlSafeUpdate($table, $index, $newValue , $whereIndex , $whereValue)
+    {
+
+        if (
+            empty($table) ||
+            empty($index) //||
+        ) {
+            return false;
+        }
+
+        $dbObj = $this::MySqlDB();
+        
+
+        $exec = $dbObj->exec("UPDATE $table SET $index = '$newValue' WHERE $whereIndex = '$whereValue'");
+
+        if($exec)
+        {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }
 
 
